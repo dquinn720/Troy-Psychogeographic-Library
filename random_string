@@ -1,0 +1,17 @@
+from random import randint
+
+def random_order(input_string):
+    return_string=""
+    return_list=[]
+    ending_punc=[".","?","!"]
+    random_punc=randint(0,2)
+    string_list=input_string.replace(".","").split(" ")
+    while len(string_list)>1:
+        word_to_choose=randint(0,len(string_list)-1)
+        return_list.append(string_list[word_to_choose])
+        string_list=string_list[0:word_to_choose]+string_list[word_to_choose+1:]
+    return_list.append(string_list[0])
+    for x in return_list:
+        return_string += str(x) + " "
+    return_string=return_string[0:len(return_string)-1] + ending_punc[random_punc]
+    return(return_string)
